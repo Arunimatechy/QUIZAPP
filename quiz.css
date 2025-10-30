@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+body {
+  background: linear-gradient(135deg, #84fab0, #8fd3f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+.quizhead {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 25px;
+  width: 600px;
+  height: 550px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.quizhead:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #03323d;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+h2 {
+  text-align: center;
+  color: #034f5e;
+  font-size: 20px;
+}
+
+
+.options {
+  padding: 15px;
+  background: linear-gradient(135deg, #c7f2f2, #b0e0e6);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 8px 0;
+  font-weight: 500;
+  color: #023f4c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.options:hover {
+  background: linear-gradient(135deg, #e6f9ff, #c7f8ef);
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background: linear-gradient(135deg, #0078d4, #00b4d8);
+  color: white;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0096c7, #48cae4);
+  transform: translateY(-2px);
+}
+
+
+.button {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.bt4 {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  width: 140px;
+  padding: 10px 15px;
+  font-weight: 600;
+}
+
+.bt4:hover {
+  background: linear-gradient(135deg, #38e38c, #2eb872);
+  transform: translateY(-2px);
+}
+
+
+.sub {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+
+#result {
+  font-size: 18px;
+  font-weight: bold;
+  color: #03323d;
+  text-align: center;
+  padding: 10px 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+#quizresult {
+  color: #014f56;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
