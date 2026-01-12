@@ -1,5 +1,3 @@
-
-
 const quiz = [
   {
     question: "Which HTML tag is used to define an internal style sheet?",
@@ -20,71 +18,94 @@ const quiz = [
 
 let index = 0;
 let score = 0;
-let question = document.getElementById("question");
-let options = document.getElementById("options");
+let selectedAnswer = null;
 
-let prevBtn = document.getElementById("prevBt");
-let nextBtn = document.getElementById("nextBtn");
-let result = document.getElementById("result");
-let playAgainBtn = document.getElementById("playAgainBtn");
-
-function checkanswer(c) {
-  if (quiz[index - 1].answer == c) {
-    result.innerText = "Correct";
-    score++;
-  } else {
-    result.innerText = "Wrong";
-  }
-
-  result.innerText = `Your score is ${score}`;
-  return;
-}
-
-function render() {
-  quiz[index].options.forEach((x) => {
-    let div = document.createElement("div");
-    div.classList.add("options");
-    div.innerText = x;
-    div.addEventListener("click", () => {
-      checkanswer(x);
-    });
-    options.append(div);
-  });
-}
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const result = document.getElementById("result");
+const prevBtn = document.getElementById("prevBt");
+const nextBtn = document.getElementById("nextBtn");
+const playAgainBtn = document.getElementById("playAgainBtn");
 
 function showQuestion() {
   options.innerHTML = "";
-  render();
-  question.innerText = quiz[index].question;
-  index++;
+  result.innerText = "";
+  selectedAnswer = null;
+
+  question.innerText = `Q${index + 1}. ${quiz[index].question}`;
+
+  quiz[index].options.forEach(opt => {
+    const div = document.createElement("div");
+    div.className = "options";
+    div.innerText = opt;
+
+    div.onclick = () => selectAnswer(div, opt);
+    options.appendChild(div);
+  });
+
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = true;
 }
 
-function previous() {
-  options.innerHTML = "";
+function selectAnswer(element, answer) {
+  if (selectedAnswer) return;
+
+  selectedAnswer = answer;
+  nextBtn.disabled = false;
+
+  const correct = quiz[index].answer;
+
+  if (answer === correct) {
+    element.classList.add("correct");
+    result.innerText = "✅ Correct!";
+    score++;
+  } else {
+    element.classList.add("wrong");
+    result.innerText = "❌ Wrong!";
+
+    document.querySelectorAll(".options").forEach(opt => {
+      if (opt.innerText === correct) {
+        opt.classList.add("correct");
+      }
+    });
+  }
+}
+
+nextBtn.onclick = () => {
+  if (index < quiz.length - 1) {
+    index++;
+    showQuestion();
+  } else {
+    showResult();
+  }
+};
+
+prevBtn.onclick = () => {
   index--;
-  question.innerText = quiz[index].question;
-  render();
+  showQuestion();
+};
+
+function showResult() {
+  question.innerText = "🎉 Quiz Completed!";
+  options.innerHTML = "";
+  result.innerText = `Your Score: ${score} / ${quiz.length}`;
+
+  nextBtn.style.display = "none";
+  prevBtn.style.display = "none";
+  playAgainBtn.style.display = "block";
 }
-
-nextBtn.addEventListener("click", showQuestion);
-prevBtn.addEventListener("click", previous);
-
 
 function resetQuiz() {
- 
   index = 0;
   score = 0;
 
- 
-  options.innerHTML = "";
-  result.innerText = "";
-  question.innerText = "";
+  nextBtn.style.display = "inline-block";
+  prevBtn.style.display = "inline-block";
+  playAgainBtn.style.display = "none";
 
- 
   showQuestion();
 }
 
-playAgainBtn.addEventListener("click", resetQuiz);
-
+playAgainBtn.onclick = resetQuiz;
 
 showQuestion();
