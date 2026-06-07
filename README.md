@@ -161,18 +161,29 @@ This project helped me improve:
 - Basic algorithm logic for scoring
 - UI building skills
 
----
-
 ## 📸 Screenshots
 
-### Quiz Page
-_Add screenshot here_
+### 🎯 Quiz Page
 
-### Result Page
-_Add screenshot here_
+![Quiz Page](screenshot/quiz-page.png)
 
-### Mobile View
-_Add screenshot here_
+Interactive quiz interface displaying questions and multiple-choice answers.
+
+---
+
+### 📊 Result Page
+
+![Result Page](screenshot/result-page.png)
+
+Shows final score, performance summary, and correct answer statistics.
+
+---
+
+### 📱 Mobile View
+
+![Mobile View](screenshot/mobile-view.png)
+
+Responsive layout optimized for smartphones and tablets.
 
 ---
 
