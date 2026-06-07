@@ -12,6 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 15px;
 }
 
 /* QUIZ CARD */
@@ -19,7 +20,8 @@ body {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   padding: 25px;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   border-radius: 18px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -43,6 +45,7 @@ h2 {
   background: rgba(255, 255, 255, 0.35);
   padding: 12px;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 /* OPTIONS */
@@ -54,6 +57,7 @@ h2 {
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s;
+  word-break: break-word;
 }
 
 .options:hover {
@@ -73,13 +77,14 @@ h2 {
 
 /* BUTTONS */
 button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 8px;
   background: linear-gradient(135deg, #0078d4, #00b4d8);
   color: white;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 16px;
 }
 
 button:hover {
@@ -96,6 +101,7 @@ button:disabled {
   display: flex;
   gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* RESULT */
@@ -110,7 +116,8 @@ button:disabled {
   display: none;
   margin: 20px auto 0;
   padding: 15px 30px;
-  width: 200px;
+  width: 220px;
+  max-width: 100%;
   font-size: 17px;
   font-weight: 700;
   border-radius: 40px;
@@ -119,17 +126,53 @@ button:disabled {
 }
 
 #playAgainBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* RESPONSIVE */
-@media (max-width: 650px) {
+/* TABLET */
+@media (max-width: 768px) {
   .quizhead {
-    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .quizhead {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .options {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .button {
+    flex-direction: column;
   }
 
   button {
     width: 100%;
   }
-}
 
+  #playAgainBtn {
+    width: 100%;
+  }
+}
